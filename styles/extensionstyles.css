@@ -10,6 +10,11 @@ html, body {
   line-height: 1.4;
   color: #fff;
   background: #111;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 /* HEADER */
@@ -53,15 +58,25 @@ nav a:hover {
   color: black;
 }
 
+.navbar-nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 5px;
+  padding: 10px 0;
+}
+
+
 /* HERO */
 .hero {
-  background: url('../images/cookingbackground2.jpg') no-repeat center/cover;
-  height: 100vh;
+  background: url('../images/cookingbackground1.jpg') no-repeat center center / cover;
+  min-height: 100vh; /* instead of height: 100% */
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  padding: 20px;
+  overflow-x: hidden;
 }
 
 .hero-box {
@@ -91,6 +106,11 @@ section {
   border-top: 1px solid #333;
   scroll-margin-top: 80px;
   border-radius: 10px;
+  width: 100%;
+  max-width: 100%;
+  padding: 40px 10px;
+  overflow-x: hidden;
+
 }
 
 section h2 {
@@ -99,6 +119,7 @@ section h2 {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+
 
 /* ABOUT DISH GALLERY */
 
@@ -376,45 +397,196 @@ footer {
   border-top: 1px solid #333;
 }
 
-/* Tablet */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* ============================= */
+/* GLOBAL MOBILE FIX */
+/* ============================= */
+
+@media (max-width: 992px) {
+  body {
+    font-size: 90%;
+  }
+}
+
+/* ============================= */
+/* HEADER — RESPONSIVE NAV FIX */
+/* ============================= */
+
 @media (max-width: 768px) {
+
   header {
     flex-direction: column;
-    gap: 8px;
+    align-items: center;
+    text-align: center;
+    padding: 0.8rem 1rem;
   }
 
   nav ul {
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 8px;
+    display: flex;
+    width: 100%;
+    align-items: center;
   }
 
-  .hero-box h2 {
-    font-size: 2rem;
-  }
-}
-
-/* Responsive for mobile, about section */
-@media (max-width: 700px) {
-  .dish-card, .dish-card:nth-child(even) {
-    flex-direction: column;
+  nav ul li {
+    width: 100%;
     text-align: center;
   }
-  .dish-card img {
-    margin-bottom: 1rem;
+
+  nav a {
+    display: block;
+    padding: 10px 0;
+    width: 100%;
   }
 }
 
-/* Mobile */
-@media (max-width: 375px) {
+/* ============================= */
+/* HERO */
+/* ============================= */
+
+@media (max-width: 480px) {
+  .hero {
+    background-position: center;
+    padding: 60px 10px;
+  }
+
+  .hero-box {
+    width: 95%;
+    padding: 1.2rem;
+  }
+
   .hero-box h2 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
 
   .hero-box p {
-    font-size: 0.9rem;
+    font-size: 1rem;
+  }
+}
+
+/* ============================= */
+/* ABOUT SECTION */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+  #about {
+    min-height: auto;
+    padding: 3rem 1rem;
   }
 
-  section {
-    padding: 110px 15px;
+  .dish-gallery {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .dish-card,
+  .dish-card:nth-child(even) {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .dish-card img {
+    width: 80%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .dish-card h3,
+  .dish-card p {
+    text-align: center !important;
+  }
+}
+
+/* ============================= */
+/* SERVICES */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+  .container {
+    height: auto;
+    padding: 10px;
+  }
+
+  .container li {
+    flex: 1 1 45%;
+    height: 160px;
+  }
+
+  .services-bg-text {
+    font-size: 10rem;
+    top: 50%;
+  }
+
+  /* disable hover scaling on mobile */
+  .container:hover {
+    gap: 20px;
+  }
+
+  .container li:hover {
+    scale: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .container li {
+    flex: 1 1 100%;
+    height: 140px;
+  }
+
+  .services-bg-text {
+    font-size: 6rem;
+  }
+}
+
+/* ============================= */
+/* CONTACT */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+  #contact {
+    min-height: 500px;
+    padding: 20px;
+    background-position: center;
+  }
+
+  .contact-content {
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    padding: 20px;
+  }
+
+  #contact h2 {
+    font-size: 1.6rem;
+  }
+}
+
+/* ============================= */
+/* EXTRA SMALL DEVICES */
+/* ============================= */
+
+@media (max-width: 375px) {
+
+  nav ul {
+    gap: 5px;
+  }
+
+  .hero-box h2 {
+    font-size: 1.4rem;
+  }
+
+  .contact-content {
+    font-size: 0.9rem;
   }
 }
